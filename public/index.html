@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>pulldown — save a video off the wire</title>
+<meta name="description" content="Paste a YouTube or Instagram link, pick a quality, download the file." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%23FF4B2E%22/><path d=%22M16 8v11m0 0-5-5m5 5 5-5%22 stroke=%22white%22 stroke-width=%222.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<div class="frame">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true"></span>
+      pulldown
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+      <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.5 8.5 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2Z"/></svg>
+    </button>
+  </header>
+
+  <main class="console">
+    <h1 class="headline">Pull a video off&nbsp;the&nbsp;wire.</h1>
+    <p class="subhead">Paste a YouTube video or Instagram reel link. Pick a quality. Get the file.</p>
+
+    <div class="segmented" role="tablist" aria-label="Source platform">
+      <button class="segmented__option is-active" id="tabYoutube" role="tab" aria-selected="true" type="button" data-platform="youtube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 8.2s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C15.9 4.6 12 4.6 12 4.6h0s-3.9 0-6.9.3c-.4 0-1.4.1-2.2 1C2.2 6.6 2 8.2 2 8.2S1.8 10 1.8 11.9v1.8c0 1.8.2 3.6.2 3.6s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.3 7.2.3s3.9 0 6.9-.3c.4 0 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.8.2-3.6v-1.8c0-1.9-.2-3.7-.2-3.7Z"/><path d="M9.9 15.3v-6l5.3 3-5.3 3Z" fill="var(--paper)" stroke="none"/></svg>
+        YouTube
+      </button>
+      <button class="segmented__option" id="tabInstagram" role="tab" aria-selected="false" type="button" data-platform="instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </button>
+    </div>
+
+    <form class="urlrow" id="urlForm">
+      <input
+        class="urlrow__input"
+        id="urlInput"
+        type="url"
+        inputmode="url"
+        placeholder="Paste a YouTube link…"
+        aria-label="Video URL"
+        autocomplete="off"
+        required
+      />
+      <button class="urlrow__btn" id="fetchBtn" type="submit">Get video</button>
+    </form>
+
+    <p class="notice" id="youtubeNotice" hidden>
+      YouTube downloads can be unreliable on free hosting — YouTube blocks shared server IPs. Instagram reels aren't affected.
+    </p>
+
+    <p class="statusline" id="statusLine" role="status" aria-live="polite"></p>
+
+    <section class="preview" id="preview" hidden>
+      <div class="preview__thumb" id="previewThumb" aria-hidden="true"></div>
+      <div class="preview__meta">
+        <p class="preview__title" id="previewTitle"></p>
+        <p class="preview__author" id="previewAuthor"></p>
+      </div>
+    </section>
+
+    <section class="quality" id="qualitySection" hidden>
+      <p class="quality__label">Quality</p>
+      <div class="quality__list" id="qualityList" role="radiogroup" aria-label="Video quality"></div>
+    </section>
+
+    <button class="download-btn" id="downloadBtn" type="button" hidden>
+      <span id="downloadBtnLabel">Download</span>
+    </button>
+
+    <div class="picker" id="pickerSection" hidden>
+      <p class="quality__label">Choose a file</p>
+      <div class="picker__list" id="pickerList"></div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>Only download content you have the rights to use. Respect each platform's terms of service and copyright law.</p>
+  </footer>
+
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
