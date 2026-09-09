@@ -1,0 +1,25 @@
+name = "pulldown"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# ---------------------------------------------------------------------------
+# Required configuration — set these before deploying (see README.md)
+#
+#   COBALT_API_URL   the base URL of your cobalt extraction backend
+#                     e.g. "https://your-cobalt-instance.up.railway.app"
+#
+# Set it with:
+#   npx wrangler secret put COBALT_API_URL
+#
+# If your cobalt instance has authentication enabled, also set:
+#   npx wrangler secret put COBALT_API_KEY
+# ---------------------------------------------------------------------------
+
+[vars]
+# Non-secret fallback so the app boots with a helpful "not configured" state
+# if you forget to set the secret above. Overridden by the secret if set.
+COBALT_API_URL = ""
