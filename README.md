@@ -16,7 +16,8 @@ So **this repo is two things**:
 
 1. **The website** (this Worker + the `public/` frontend) — fully built,
    ready to deploy, dark mode and all.
-2. **A thin proxy layer** that calls out to a separate extraction backend
+   
+3. **A thin proxy layer** that calls out to a separate extraction backend
    you point it at. That backend does the actual work of resolving a
    YouTube/Instagram link into a downloadable file.
 
