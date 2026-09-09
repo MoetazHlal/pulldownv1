@@ -19,7 +19,4 @@ binding = "ASSETS"
 #   npx wrangler secret put COBALT_API_KEY
 # ---------------------------------------------------------------------------
 
-[vars]
-# Non-secret fallback so the app boots with a helpful "not configured" state
-# if you forget to set the secret above. Overridden by the secret if set.
-COBALT_API_URL = ""
+
